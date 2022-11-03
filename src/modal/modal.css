@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.modal {
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    position: relative;
+    width: 500px;
+    height: 335px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: #33BC7E;
+    padding:10px 15px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: large;
+}
+
+.button:hover {
+    cursor:pointer;
+}
+
+.container {
+    text-align: center;
+}
+
+.closeImage {
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
+}
+
+.close:hover {
+    cursor:pointer;
+}
+
+.modalTitle {
+    padding-left: 20px;
+    font-size: 25px;
+}
+
+.input {
+    height:30px;
+    width:300px;
+    border: none;
+    border:1px solid lightgrey;
+    border-radius: 8px;
+}
+
+.input:hover {
+    border: 1px solid black;
+}
+
+.lable {
+    position: absolute;
+    left: 20px;
+    font-weight: 600;
+}
+
+.listName {
+    display: grid;
+    gap: 8px;
+    padding-left: 20px;
+    padding-top: 25px;
+}
+
+.description {
+    display: grid;
+    gap: 8px;
+    padding-left: 20px;
+}
+
+.line {
+    border-bottom: 0.5px solid lightgray;
+}
