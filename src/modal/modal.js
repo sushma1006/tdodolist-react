@@ -8,13 +8,13 @@ function Modal({showModal, addListDetails, hideModal}) {
         description : "",
     })
 
-    const onChangeName = (e) => {
-        setListDetails({...listDetails, [e.target.name] : e.target.value})
+    const handleChangeName = (event) => {
+        setListDetails({...listDetails, [event.target.name] : event.target.value})
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = (event) => {
         console.log(listDetails);
-        e.preventDefault();
+        event.preventDefault();
         addListDetails(listDetails);
         setListDetails({listName : "", description : ""})
     }
@@ -34,11 +34,11 @@ function Modal({showModal, addListDetails, hideModal}) {
                 <form onSubmit={onSubmit}>
                     <div className='listName'>
                         <label className='lable'>Name:</label><br/>
-                        <input className='input' name="listName" type="text" value={listDetails.listName} onChange={onChangeName}/><br/>
+                        <input className='input' name="listName" type="text" value={listDetails.listName} onChange={handleChangeName}/><br/>
                     </div>
                     <div className='description'>
                         <label className='lable'>Description:</label><br/>
-                        <input className='input' name="description" type="text" value={listDetails.description} onChange={onChangeName}/><br/>
+                        <input className='input' name="description" type="text" value={listDetails.description} onChange={handleChangeName}/><br/>
                     </div>
                     <div className="modalFooter">
                         <button className="button">Save</button>

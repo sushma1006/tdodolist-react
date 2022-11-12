@@ -15,7 +15,7 @@ function App() {
   }
   console.log(toDoListDetail) 
 
-  const rowDelete = (id) => {
+  const deleteRow = (id) => {
     const row = [...toDoListDetail];
     row.splice(id,1);
     setToDoListDetail(row);
@@ -42,7 +42,7 @@ function App() {
         </div>
         <Modal showModal={showModal} addListDetails={addListDetails} hideModal={() => setShowModal(false)}/>
         <View toDoListDetail={toDoListDetail} showGrid={showGrid}/>
-        <Table rowDelete={rowDelete} showTable={showTable} toDoListDetail={toDoListDetail} setToDoListDetail={setToDoListDetail}/>
+        <Table deleteRow={deleteRow} showTable={showTable} toDoListDetail={toDoListDetail} setToDoListDetail={setToDoListDetail}/>
       </div>
     </div>  
   );

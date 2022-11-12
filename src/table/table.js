@@ -2,8 +2,8 @@ import React,{useState} from "react";
 import './table.css'
 import format from "date-fns/format";
 
-function Table({toDoListDetail, showTable, rowDelete, setToDoListDetail}) {
-    const [edit, setEdit] = useState(null);
+function Table({toDoListDetail, showTable, deleteRow, setToDoListDetail}) {
+    const [editId, setEditId] = useState(null);
     const [editTableDetails, setEditTableDetails] = useState({
         listName : "",
         description : "",
@@ -13,8 +13,8 @@ function Table({toDoListDetail, showTable, rowDelete, setToDoListDetail}) {
         setEditTableDetails({...editTableDetails, [e.target.name] : e.target.value})
     };
 
-    const editValue = (id, list) => {
-        setEdit(id);
+    const editTableValue = (id, list) => {
+        setEditId(id);
         const listValues = {
             listName: list.listName,
             description: list.description,
@@ -22,7 +22,7 @@ function Table({toDoListDetail, showTable, rowDelete, setToDoListDetail}) {
         setEditTableDetails(listValues);
     }
 
-    const saveValue = (id) => {
+    const saveTableValue = (id) => {
         const editedValues = {
             listName: editTableDetails.listName,
             description: editTableDetails.description, 
@@ -31,7 +31,7 @@ function Table({toDoListDetail, showTable, rowDelete, setToDoListDetail}) {
         const index = toDoListDetail.findIndex(( editedValues, index) => index === id);
         editedData[index] = editedValues;
         setToDoListDetail(editedData);
-        setEdit(null);
+        setEditId(null);
     }
 
     if (!showTable) {
@@ -53,21 +53,21 @@ function Table({toDoListDetail, showTable, rowDelete, setToDoListDetail}) {
                     {toDoListDetail.map((list, id) => {
                         return (
                             <>
-                                {edit == id ? (
+                                {editId == id ? (
                                     <tr key={id}>
                                         <td><input type="text" name="listName" value={editTableDetails.listName} onChange={handleChangeValue}/></td>
                                         <td><input type="text" name="description" value={editTableDetails.description} onChange={handleChangeValue}/></td>
                                         <td>{format ( new Date(), 'dd/MM/yyyy')}</td>
-                                        <td><button className="tableButton" onClick={() => saveValue(id)}>Save</button></td>
-                                        <td><button className="tableButton" onClick={() => rowDelete(id)}>Delete</button></td>
+                                        <td><button className="tableButton" onClick={() => saveTableValue(id)}>Save</button></td>
+                                        <td><button className="tableButton" onClick={() => deleteRow(id)}>Delete</button></td>
                                     </tr>
                                 ) : (
                                     <tr key={id}>
                                         <td>{list.listName}</td> 
                                         <td>{list.description}</td> 
                                         <td>{format ( new Date(), 'dd/MM/yyyy')}</td>
-                                        <td><button className="tableButton" onClick={() => editValue(id,list)}>edit</button></td>
-                                        <td><button className="tableButton" onClick={() => rowDelete(id)}>Delete</button></td>
+                                        <td><button className="tableButton" onClick={() => editTableValue(id,list)}>Edit</button></td>
+                                        <td><button className="tableButton" onClick={() => deleteRow(id)}>Delete</button></td>
                                     </tr>
                                 )}
                             </>
