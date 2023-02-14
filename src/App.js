@@ -5,6 +5,7 @@ import View from './view/view';
 import Table from './table/table'
 
 function App() {
+  //these are the states used in this application
   const [showModal, setShowModal] = useState(false);
   const [toDoListDetail, setToDoListDetail] = useState([]);
   const [showGrid, setShowGrid] = useState(true);
